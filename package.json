@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "next dev"
+    "dev": "NODE_OPTIONS='--inspect' next dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apisauce": "^2.0.1",
     "next": "^10.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
