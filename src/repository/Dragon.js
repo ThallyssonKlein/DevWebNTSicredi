@@ -8,12 +8,18 @@ export function New(){
 
 }
 
+export async function EditAttribute(dragonId, attrName, newValue){
+    let obj = {}
+    obj[attrName] = newValue
+    const result = await API.put('/api/v1/dragon/' + dragonId, obj);
+    return result.ok;
+}
+
 export async function FindAll(){
     const result = await API.get('/api/v1/dragon');
     if(result.ok){
         return result.data;
     }else{
-        alert("Erro de conexão com a API");
-        return {};
+        return null;
     }
 }

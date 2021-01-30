@@ -1,6 +1,11 @@
+import React, { useState } from 'react';
 import styles from './index.module.css';
+import Td from './Td';
 
 export default function Table(props){
+    const [isInEditMode, setEditMode] = useState(false);
+    const [editingDragonAndAttr, setEditingDragonAndAttr] = useState(null);
+
     return <table className={styles.table}>
             <tr className={styles.tr}>
                 <th className={styles.th}>Id</th>
@@ -10,10 +15,30 @@ export default function Table(props){
             </tr>
             {
                 props.dragons.map(dragon => <tr className={styles.tr} key={dragon.id}>
-                    <td className={styles.td} key={dragon.id}>{dragon["id"]}</td>
-                    <td className={styles.td} key={dragon.id}>{dragon["createdAt"]}</td>
-                    <td className={styles.td} key={dragon.id}>{dragon["name"]}</td>
-                    <td className={styles.td} key={dragon.id}>{dragon["type"]}</td>
+                    <Td isInEditMode={isInEditMode}
+                        setEditMode={setEditMode}
+                        editingDragonAndAttr={editingDragonAndAttr}
+                        setEditingDragonAndAttr={setEditingDragonAndAttr}
+                        attr={"id"}
+                        dragon={dragon}/>
+                     <Td isInEditMode={isInEditMode}
+                        setEditMode={setEditMode}
+                        editingDragonAndAttr={editingDragonAndAttr}
+                        setEditingDragonAndAttr={setEditingDragonAndAttr}
+                        attr={"createdAt"}
+                        dragon={dragon}/>
+                     <Td isInEditMode={isInEditMode}
+                        setEditMode={setEditMode}
+                        editingDragonAndAttr={editingDragonAndAttr}
+                        setEditingDragonAndAttr={setEditingDragonAndAttr}
+                        attr={"name"}
+                        dragon={dragon}/>
+                     <Td isInEditMode={isInEditMode}
+                        setEditMode={setEditMode}
+                        editingDragonAndAttr={editingDragonAndAttr}
+                        setEditingDragonAndAttr={setEditingDragonAndAttr}
+                        attr={"type"}
+                        dragon={dragon}/>
                 </tr>)
             }
         </table>
