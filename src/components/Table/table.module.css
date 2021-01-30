@@ -20,3 +20,7 @@
     background-color: #4CAF50;
     color: white;
 }
+
+.selectedTr {
+    background-color: rgb(90, 90, 90)
+}

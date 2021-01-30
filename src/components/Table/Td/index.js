@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import styles from '../index.module.css';
+import styles from '../table.module.css';
 import { HiPencilAlt } from 'react-icons/hi';
 import { EditAttribute } from '../../../service/Dragon';
 import { ErrorMessageContext } from '../../../contexts/ErrorMessageContext';
@@ -31,12 +31,12 @@ export default function Td({isInEditMode,
         return <td className={styles.td}>
                 <div style={{display : 'flex', flexDirection : 'row', justifyContent : 'space-between'}}>
                     {tdValue}
-                    <button onClick={_ => {
+                    {(attr !== "createdAt" && attr !== "id") &&  <button onClick={_ => {
                         setEditingDragonAndAttr({id : dragon.id, attr});
                         setEditMode(true);
                     }}>
                         <HiPencilAlt/>
-                    </button>
+                    </button>}
                 </div>
             </td> 
     }

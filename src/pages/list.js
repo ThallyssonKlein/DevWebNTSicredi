@@ -5,11 +5,15 @@ import { FindAll } from '../service/Dragon';
 import Table from '../components/Table';
 
 import { ErrorMessageContext } from '../contexts/ErrorMessageContext';
+import { TrContext } from '../contexts/TrContext';
+
+import { BsFillTrashFill, BsFillPlusCircleFill } from 'react-icons/bs';
 
 export default function List(){
     const {messages, addAMessage} = useContext(ErrorMessageContext);
     const [dragons, setDragons] = useState(false);
-    
+    const {deleteSelecteds} = useContext(TrContext);
+
     useEffect(async _ => {
         const Dragons = await FindAll();
         if(Dragons){
@@ -25,6 +29,10 @@ export default function List(){
         </head>
         <body>
             {messages}
+            <div style={{display : 'flex', flexDirection : 'row', justifyContent : "right", paddingBottom : 10}}>
+                <button><BsFillPlusCircleFill/></button>
+                <button onClick={_ => deleteSelecteds()}><BsFillTrashFill/></button>
+            </div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 {(dragons) ? <Table dragons={dragons}/> : "Carregando Dragões...."}
             </div>

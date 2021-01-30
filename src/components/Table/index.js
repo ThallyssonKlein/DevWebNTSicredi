@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from './index.module.css';
-import Td from './Td';
+import styles from './table.module.css';
+import Tr from './Tr';
 
 export default function Table(props){
     const [isInEditMode, setEditMode] = useState(false);
@@ -8,38 +8,18 @@ export default function Table(props){
 
     return <table className={styles.table}>
             <tr className={styles.tr}>
+                <th className={styles.th}>Seletor</th>
                 <th className={styles.th}>Id</th>
-                <th className={styles.th}>Criado Em</th>
                 <th className={styles.th}>Nome</th>
                 <th className={styles.th}>Tipo</th>
+                <th className={styles.th}>Criado Em</th>
             </tr>
             {
-                props.dragons.map(dragon => <tr className={styles.tr} key={dragon.id}>
-                    <Td isInEditMode={isInEditMode}
-                        setEditMode={setEditMode}
-                        editingDragonAndAttr={editingDragonAndAttr}
-                        setEditingDragonAndAttr={setEditingDragonAndAttr}
-                        attr={"id"}
-                        dragon={dragon}/>
-                     <Td isInEditMode={isInEditMode}
-                        setEditMode={setEditMode}
-                        editingDragonAndAttr={editingDragonAndAttr}
-                        setEditingDragonAndAttr={setEditingDragonAndAttr}
-                        attr={"createdAt"}
-                        dragon={dragon}/>
-                     <Td isInEditMode={isInEditMode}
-                        setEditMode={setEditMode}
-                        editingDragonAndAttr={editingDragonAndAttr}
-                        setEditingDragonAndAttr={setEditingDragonAndAttr}
-                        attr={"name"}
-                        dragon={dragon}/>
-                     <Td isInEditMode={isInEditMode}
-                        setEditMode={setEditMode}
-                        editingDragonAndAttr={editingDragonAndAttr}
-                        setEditingDragonAndAttr={setEditingDragonAndAttr}
-                        attr={"type"}
-                        dragon={dragon}/>
-                </tr>)
+                props.dragons.map(dragon => <Tr dragon={dragon}
+                                                isInEditMode={isInEditMode}
+                                                setEditMode={setEditMode}
+                                                editingDragonAndAttr={editingDragonAndAttr}
+                                                setEditingDragonAndAttr={setEditingDragonAndAttr}/>)
             }
         </table>
 }

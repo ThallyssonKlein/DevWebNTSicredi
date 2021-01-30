@@ -8,6 +8,11 @@ export function New(){
 
 }
 
+export async function DeleteOne(dragonId){
+    const result = await API.delete('/api/v1/dragon/' + dragonId);
+    return result.ok;
+}
+
 export async function EditAttribute(dragonId, attrName, newValue){
     let obj = {}
     obj[attrName] = newValue
