@@ -9,9 +9,6 @@ export function New(){
 }
 
 export async function FindAll(){
-    // const Dragon = {
-    //     id, createdAt, Name, type
-    // }
     const result = await API.get('/api/v1/dragon');
     if(result.ok){
         return result.data;

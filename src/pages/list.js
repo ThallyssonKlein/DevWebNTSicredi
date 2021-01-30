@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { FindAll } from '../repository/Dragon';
+import { FindAll } from '../service/Dragon';
 
 import Table from '../components/Table';
 
