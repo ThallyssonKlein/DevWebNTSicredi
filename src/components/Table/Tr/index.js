@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { TrContext } from '../../../contexts/TrContext';
 import styles from '../table.module.css';
 import Td from '../Td';
+import { isMobile } from "react-device-detect";
 
 export default function Tr({dragon, isInEditMode, setEditMode, editingDragonAndAttr, setEditingDragonAndAttr}){
     const { selecteds, setSelecteds, deleteds} = useContext(TrContext);
@@ -21,12 +22,12 @@ export default function Tr({dragon, isInEditMode, setEditMode, editingDragonAndA
                             }
                         }/>
             </td>
-            <Td isInEditMode={isInEditMode}
+            {!isMobile && <Td isInEditMode={isInEditMode}
                 setEditMode={setEditMode}
                 editingDragonAndAttr={editingDragonAndAttr}
                 setEditingDragonAndAttr={setEditingDragonAndAttr}
                 attr={"id"}
-                dragon={dragon}/>
+                dragon={dragon}/>}
             <Td isInEditMode={isInEditMode}
                 setEditMode={setEditMode}
                 editingDragonAndAttr={editingDragonAndAttr}
@@ -39,12 +40,12 @@ export default function Tr({dragon, isInEditMode, setEditMode, editingDragonAndA
                 setEditingDragonAndAttr={setEditingDragonAndAttr}
                 attr={"type"}
                 dragon={dragon}/>
-            <Td isInEditMode={isInEditMode}
+            {!isMobile && <Td isInEditMode={isInEditMode}
                 setEditMode={setEditMode}
                 editingDragonAndAttr={editingDragonAndAttr}
                 setEditingDragonAndAttr={setEditingDragonAndAttr}
                 attr={"createdAt"}
-                dragon={dragon}/>
+                dragon={dragon}/>}
         </tr>
     }
 }

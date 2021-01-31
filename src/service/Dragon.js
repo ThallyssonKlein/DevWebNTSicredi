@@ -9,9 +9,7 @@ export async function FindAll(){
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
         result = result.map(obj => {
-            let createdAt = new Date(obj.createdAt)
-            obj.createdAt = createdAt.getDay() + "/" + createdAt.getMonth() + "/" + createdAt.getYear() + " "
-                          + createdAt.getHours() + ":" + createdAt.getMinutes();
+            obj.createdAt = new Date(obj.createdAt).toLocaleString();
             return obj;
         });
     }
