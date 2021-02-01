@@ -22,7 +22,8 @@ export default function DetailModal(props){
 
     return <Modal isOpen={props.detailsVisible}
                   onAfterOpen={afterOpenModal}
-                  contentLabel="Detalhes do Dragão">
+                  contentLabel="Detalhes do Dragão"
+                  closeTimeoutMS={150}>
 
                         {(detalhes) ? <div className={styles.container}>
                             <div className={styles.top}>

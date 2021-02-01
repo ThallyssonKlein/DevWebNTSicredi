@@ -12,10 +12,12 @@ import NavBar from '../components/NavBar';
 import ButtonsBar from '../components/ButtonsBar';
 
 import DetailModal from '../components/DetailModal';
+import NewModal from '../components/NewModal';
 function List(){
     const {messages, addAMessage} = useContext(ErrorMessageContext);
     const [dragons, setDragons] = useState(false);
     const [detailsVisible, setDetailsVisible] = useState(false);
+    const [newVisible, setNewVisible] = useState(false);
 
     useEffect(async _ => {
         const Dragons = await FindAll();
@@ -34,11 +36,12 @@ function List(){
             <body style={{padding : 0, margin : 0, display : "flex", flex : 1, flexDirection : "column"}}>
                 <NavBar/>
                 <DetailModal detailsVisible={detailsVisible} setDetailsVisible={setDetailsVisible}/>
+                <NewModal newVisible={newVisible} setNewVisible={setNewVisible}/>
                 <section>
                     {messages}
                    
 
-                   <ButtonsBar setDetailsVisible={setDetailsVisible}/>
+                   <ButtonsBar setDetailsVisible={setDetailsVisible} setNewVisible={setNewVisible}/>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         {(dragons) ? <Table dragons={dragons}/> : "Carregando Dragões...."}
                     </div>

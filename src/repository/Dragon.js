@@ -4,8 +4,9 @@ const API = create({
     baseURL : "http://5c4b2a47aa8ee500142b4887.mockapi.io"
 });
 
-export function New(){
-
+export async function New(name, type){
+    const result = await API.post('/api/v1/dragon', {name, type});
+    return result.ok;
 }
 
 export async function FindOne(dragonId){

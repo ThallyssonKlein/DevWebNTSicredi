@@ -11,7 +11,7 @@ export default function ButtonsBar(props){
 
     return(
         <div className={styles.container}>
-            <button>
+            <button onClick={_ => props.setNewVisible(true)}>
                 <BsFillPlusCircleFill/>
             </button>
             <button onClick={_ => deleteSelecteds()}>

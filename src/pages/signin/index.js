@@ -17,7 +17,9 @@ function SignIn() {
 
   return (
     <html>
-      <head></head>
+      <head>
+          <title>Login — Gerenciador de Dragões</title>
+      </head>
       <body className={styles.container}>
         <div className={styles.center}>
             <h2 className={styles.h2}>GERENCIADOR DE DRAGÕES</h2>
