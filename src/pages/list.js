@@ -69,6 +69,6 @@ List.getInitialProps = async ctx => {
         return {}
     }
     return {}
-  }
+}
 
 export default List;
