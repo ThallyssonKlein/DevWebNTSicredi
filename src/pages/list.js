@@ -62,12 +62,13 @@ function List(){
 }
 
 List.getInitialProps = async ctx => {
+    console.log(ctx);
     const session = await getSession(ctx);
     if(!session){
         ctx.res.writeHead(302, { Location: "/signin" }).end()
         return {}
     }
     return {}
-  }
+}
 
 export default List;

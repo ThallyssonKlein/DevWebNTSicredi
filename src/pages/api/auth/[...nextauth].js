@@ -5,22 +5,45 @@ const options = {
   providers: [
     Providers.Credentials({
         name: 'Credentials',
-        credentials: {
-          username: { label: "Username", type: "text", placeholder: "jsmith" },
-          password: {  label: "Password", type: "password" }
-        },
         authorize: async (credentials) => {
-          const user = { id: 1, name: 'test', email: 'test@example.com' }
-    
+          console.log(credentials);
           if (credentials.username === "test" && credentials.password === "test") {
-            return Promise.resolve(user)
+            console.log("logou");
+             return Promise.resolve({ id: 1, name: 'test', email: 'test@example.com' });
           } else {
-            return Promise.resolve(null)
+             Promise.reject(new Error('Invalid Username  and Password combination'));
           }
         }
       })
-    
-  ]
+  ],
+  site: "http://localhost:3000",
+  pages: {
+    signIn: '/signin'
+  },
+  session: {
+    jwt: true, 
+    maxAge: 1 * 3 * 60 * 60, // 3 hrs
+    updateAge: 24 * 60 * 60, // 24 hours
+  },
+  callbacks: {
+    signIn: async (user, account, profile) => {
+      return Promise.resolve(true)
+    },
+    redirect: async (url, baseUrl) => {
+      return Promise.resolve(baseUrl)
+    },
+    session: async (session, user) => {
+      return Promise.resolve(session)
+    },
+    jwt: async (token, user, account, profile, isNewUser) => {
+      return Promise.resolve(token)
+    }
+  }
+  ,
+  secret: "abc",
+  jwt: {
+      secret: "abc",
+  }
 }
 
 export default (req, res) => NextAuth(req, res, options)
