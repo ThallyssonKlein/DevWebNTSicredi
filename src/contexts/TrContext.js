@@ -6,6 +6,8 @@ import { ErrorMessageContext } from './ErrorMessageContext';
 
 export const TrContext = createContext();
 
+import { FindOne } from '../service/Dragon';
+
 export default function TrProvider({children}){
     const [selecteds, setSelecteds] = useState([]);
     const [deleteds, setDeleteds] = useState([]);
@@ -26,7 +28,19 @@ export default function TrProvider({children}){
         }
     }
 
-    return <TrContext.Provider value={{selecteds, setSelecteds, deleteds, deleteSelecteds}}>
+    function validateSelectedOne(){
+        return Object.keys(selecteds).length === 1;
+    }
+
+    async function viewSelectedOne(){
+        const result = await FindOne(Object.keys(selecteds)[0]);
+        if(!result){
+            alert("Falha na comunicação com a API");
+        }
+        return result;
+    }
+
+    return <TrContext.Provider value={{selecteds, setSelecteds, deleteds, deleteSelecteds, viewSelectedOne, validateSelectedOne}}>
                 {children}
            </TrContext.Provider>
 }

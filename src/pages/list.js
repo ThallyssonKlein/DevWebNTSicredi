@@ -5,20 +5,17 @@ import { FindAll } from '../service/Dragon';
 import Table from '../components/Table';
 
 import { ErrorMessageContext } from '../contexts/ErrorMessageContext';
-import { TrContext } from '../contexts/TrContext';
-
-import Modal from 'react-modal';
 
 import { getSession } from 'next-auth/client';
 
 import NavBar from '../components/NavBar';
 import ButtonsBar from '../components/ButtonsBar';
+
+import DetailModal from '../components/DetailModal';
 function List(){
     const {messages, addAMessage} = useContext(ErrorMessageContext);
     const [dragons, setDragons] = useState(false);
     const [detailsVisible, setDetailsVisible] = useState(false);
-    const [detalhes, setDetalhes] = useState(null);
-    const {deleteSelecteds} = useContext(TrContext);
 
     useEffect(async _ => {
         const Dragons = await FindAll();
@@ -29,10 +26,6 @@ function List(){
         }
     }, []);
 
-    const afterOpenModal = _ => {
-
-    }
-
     return(
         <html>
             <head>
@@ -40,18 +33,12 @@ function List(){
             </head>
             <body style={{padding : 0, margin : 0, display : "flex", flex : 1, flexDirection : "column"}}>
                 <NavBar/>
+                <DetailModal detailsVisible={detailsVisible} setDetailsVisible={setDetailsVisible}/>
                 <section>
                     {messages}
-                    <Modal isOpen={detailsVisible}
-                        onAfterOpen={afterOpenModal}
-                        contentLabel="Detalhes do Dragão">
+                   
 
-                            {(detalhes) ? <div>
-
-                            </div> : "Carregando detalhes..."}        
-                    </Modal>
-
-                   <ButtonsBar/>
+                   <ButtonsBar setDetailsVisible={setDetailsVisible}/>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         {(dragons) ? <Table dragons={dragons}/> : "Carregando Dragões...."}
                     </div>

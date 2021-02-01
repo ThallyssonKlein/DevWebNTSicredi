@@ -1,4 +1,7 @@
-import { FindAll as FindAllR, EditAttribute as EditAttributeR, DeleteOne as DeleteOneR} from '../repository/Dragon';
+import { FindAll as FindAllR,
+         EditAttribute as EditAttributeR,
+         DeleteOne as DeleteOneR,
+         FindOne as FindOneR} from '../repository/Dragon';
 
 export async function FindAll(){
     let result = await FindAllR();
@@ -22,5 +25,11 @@ export async function DeleteOne(dragonId){
 }
 export async function EditAttribute(dragonId, attrName, newValue){
     const result = await EditAttributeR(dragonId, attrName, newValue);
+    return result;
+}
+
+export async function FindOne(dragonId){
+    const result = await FindOneR(dragonId);
+    result.createdAt = new Date(result.createdAt).toLocaleString();
     return result;
 }

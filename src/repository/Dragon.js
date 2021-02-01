@@ -8,6 +8,15 @@ export function New(){
 
 }
 
+export async function FindOne(dragonId){
+    const result = await API.get('/api/v1/dragon/' + dragonId);
+    if(result.ok){
+        return result.data;
+    }else{
+        return null;
+    }
+}
+
 export async function DeleteOne(dragonId){
     const result = await API.delete('/api/v1/dragon/' + dragonId);
     return result.ok;
