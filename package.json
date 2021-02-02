@@ -1,18 +1,31 @@
 {
-  "name": "DevWebSicredi",
+  "name": "DevWebNTSicredi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "next dev"
+    "dev": "NODE_OPTIONS='--inspect' next dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apisauce": "^2.0.1",
     "next": "^10.0.6",
+    "next-auth": "^3.1.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-device-detect": "^1.15.0",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-modal": "^3.12.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
