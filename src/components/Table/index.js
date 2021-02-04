@@ -10,19 +10,21 @@ export default function Table(props){
     window.addEventListener('resize', _ => window.location.reload());
 
     return <table className={styles.table}>
-            <tr className={styles.tr}>
-                <th className={styles.th}>Seletor</th>
-                {!isMobile && <th className={styles.th}>Id</th>}
-                <th className={styles.th}>Nome</th>
-                <th className={styles.th}>Tipo</th>
-                {!isMobile && <th className={styles.th}>Criado Em</th>}
-            </tr>
+            <thead>
+                <tr className={styles.tr}>
+                    <th className={styles.th}>Seletor</th>
+                    {!isMobile && <th className={styles.th}>Id</th>}
+                    <th className={styles.th}>Nome</th>
+                    <th className={styles.th}>Tipo</th>
+                    {!isMobile && <th className={styles.th}>Criado Em</th>}
+                </tr>
+            </thead>
             {
                 props.dragons.map(dragon => <Tr dragon={dragon}
-                                                isInEditMode={isInEditMode}
-                                                setEditMode={setEditMode}
-                                                editingDragonAndAttr={editingDragonAndAttr}
-                                                setEditingDragonAndAttr={setEditingDragonAndAttr}/>)
+                    isInEditMode={isInEditMode}
+                    setEditMode={setEditMode}
+                    editingDragonAndAttr={editingDragonAndAttr}
+                    setEditingDragonAndAttr={setEditingDragonAndAttr}/>)
             }
         </table>
 }

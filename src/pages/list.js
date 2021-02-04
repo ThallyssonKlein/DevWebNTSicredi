@@ -13,6 +13,7 @@ import ButtonsBar from '../components/ButtonsBar';
 
 import DetailModal from '../components/DetailModal';
 import NewModal from '../components/NewModal';
+import Head from 'next/head';
 function List(){
     const {messages, addAMessage} = useContext(ErrorMessageContext);
     const [dragons, setDragons] = useState(false);
@@ -29,11 +30,10 @@ function List(){
     }, []);
 
     return(
-        <html>
-            <head>
-                <title>Lista dos dragões — Gerenciador de Dragões</title>
-            </head>
-            <body style={{padding : 0, margin : 0, display : "flex", flex : 1, flexDirection : "column"}}>
+        <div style={{padding : 0, margin : 0, display : "flex", flex : 1, flexDirection : "column"}}>
+                <Head>
+                    <title>Lista dos dragões — Gerenciador de Dragões</title>
+                </Head>
                 <NavBar/>
                 <DetailModal detailsVisible={detailsVisible} setDetailsVisible={setDetailsVisible}/>
                 <NewModal newVisible={newVisible} setNewVisible={setNewVisible}/>
@@ -46,8 +46,7 @@ function List(){
                         {(dragons) ? <Table dragons={dragons}/> : "Carregando Dragões...."}
                     </div>
                 </section>
-            </body>
-        </html>
+            </div>
     );
 }
 

@@ -15,7 +15,7 @@ export default function TrProvider({children}){
 
     async function deleteSelecteds(){
         for (const [key] of Object.entries(selecteds)) {
-            selecteds[key] = false;
+            delete selecteds[key];
 
             const result = await DeleteOne(key);
             if(result){

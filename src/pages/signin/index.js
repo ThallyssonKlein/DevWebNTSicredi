@@ -5,6 +5,8 @@ import { getSession } from 'next-auth/client';
 
 import styles from './signin.module.css';
 
+import Head from 'next/head';
+
 function SignIn() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -16,11 +18,10 @@ function SignIn() {
   }
 
   return (
-    <html>
-      <head>
-          <title>Login — Gerenciador de Dragões</title>
-      </head>
-      <body className={styles.container}>
+      <div className={styles.container}>
+        <Head>
+            <title>Login — Gerenciador de Dragões</title>
+        </Head>
         <div className={styles.center}>
             <h2 className={styles.h2}>GERENCIADOR DE DRAGÕES</h2>
             <input type="text"
@@ -36,8 +37,7 @@ function SignIn() {
             <button className={styles.button}
                     onClick={_ => login()}>ENTRAR</button>
         </div>
-      </body>
-    </html>
+      </div>
   )
 }
 
