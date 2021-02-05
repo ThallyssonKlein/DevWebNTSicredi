@@ -17,7 +17,11 @@ export default function Tr({dragon, isInEditMode, setEditMode, editingDragonAndA
                        checked={selecteds[dragon.id]}
                        onChange={e => {
                                     let obj = {...selecteds};
-                                    obj[dragon.id] = e.target.checked;
+                                    if(e.target.checked){
+                                        obj[dragon.id] = e.target.checked;
+                                    }else{
+                                        delete obj[dragon.id];
+                                    }
                                     setSelecteds(obj);
                             }
                         }/>
