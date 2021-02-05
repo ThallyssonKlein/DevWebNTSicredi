@@ -11,21 +11,22 @@ import { FindOne } from '../service/Dragon';
 export default function TrProvider({children}){
     const [selecteds, setSelecteds] = useState([]);
     const [deleteds, setDeleteds] = useState([]);
-    const [addAMessage] = useContext(ErrorMessageContext);
+    const { addAMessage } = useContext(ErrorMessageContext);
 
     async function deleteSelecteds(){
+        let objSelecteds = {...selecteds}
+        let objDeleteds = {...deleteds}
         for (const [key] of Object.entries(selecteds)) {
-            delete selecteds[key];
-
-            const result = await DeleteOne(key);
-            if(result){
-                let objDeleteds = {...deleteds}
+             delete objSelecteds[key];
+             const result = await DeleteOne(key);
+             if(result){
                 objDeleteds[key] = true;
-                setDeleteds(objDeleteds);
-            }else{
-                addAMessage("Erro ao deletar!");
-            }
+             }else{
+                    addAMessage("Erro ao deletar!");
+             }
         }
+        setSelecteds(objSelecteds);
+        setDeleteds(objDeleteds);
     }
 
     function validateSelectedOne(){
